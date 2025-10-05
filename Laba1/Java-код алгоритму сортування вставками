@@ -1,0 +1,70 @@
+public class Main { 
+    public static void main(String[] args) { 
+        int[] A = {79, 97, 82, 18, 20, 2, 88, 61, 17}; 
+        int n = A.length; 
+
+        int comparisons = 0;  // Лічильник порівнянь 
+        int assignments = 0;  // Лічильник присвоєнь 
+
+        // Вивід початкового масиву 
+        System.out.print("Початковий масив: ["); 
+        for (int i = 0; i < n; i++) { 
+            System.out.print(A[i] + (i < n - 1 ? ", " : "")); 
+        } 
+        System.out.println("]"); 
+        System.out.println("------------------------------"); 
+
+        // Зовнішній цикл 
+        for (int j = 1; j < n; j++) { 
+            int key = A[j]; 
+            int i = j - 1; 
+            assignments += 2;
+
+            System.out.println("Ітерація " + j + ":"); 
+            System.out.println(" Елемент для вставки (key): " + key); 
+
+            System.out.print(" Відсортована частина: ["); 
+            for (int k = 0; k <= i; k++) { 
+                System.out.print(A[k] + (k < i ? ", " : "")); 
+            } 
+            System.out.println("]"); 
+
+            // Внутрішній цикл 
+            while (i >= 0 && A[i] > key) { 
+                comparisons++; // Порівняння у while 
+                System.out.println(" Порівняння: " + A[i] + " > " + key + ". True. Зсуваємо " + A[i] + " вправо."); 
+                A[i + 1] = A[i]; 
+                assignments++; 
+                i--; 
+                assignments++; 
+            } 
+
+            // Після виходу з while — додаткове порівняння 
+            if (i >= 0) { 
+                comparisons++; 
+                System.out.println(" Порівняння: " + A[i] + " > " + key + ". False. Цикл завершено."); 
+            } else { 
+                System.out.println(" Досягнуто початку масиву. Цикл завершено."); 
+            } 
+            A[i + 1] = key; 
+            assignments++; 
+            System.out.println(" Вставка " + key + " на позицію " + (i + 1) + "."); 
+            System.out.print(" Масив після ітерації " + j + ":\n["); 
+            for (int k = 0; k < n; k++) { 
+                System.out.print(A[k] + (k < n - 1 ? ", " : "")); 
+            } 
+            System.out.println("]"); 
+            System.out.println("------------------------------"); 
+        } 
+
+        // Підсумковий результат
+        System.out.println("Сортування завершено."); 
+        System.out.print("Фінальний відсортований масив:\n["); 
+        for (int i = 0; i < n; i++) { 
+            System.out.print(A[i] + (i < n - 1 ? ", " : "")); 
+        } 
+        System.out.println("]"); 
+        System.out.println("Загальна кількість порівнянь: " + comparisons); 
+        System.out.println("Загальна кількість присвоєнь: " + assignments); 
+    } 
+} 
