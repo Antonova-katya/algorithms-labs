@@ -1,0 +1,69 @@
+public class Main { 
+    public static void main(String[] args) { 
+        int[] arr = {79, 97, 82, 18, 20, 2, 88, 61, 17};  // Варіант 2 
+        int n = arr.length; 
+
+        System.out.print("Початковий масив: "); 
+        printArray(arr); 
+
+        int comparisons = 0; 
+        int assignments = 0; 
+
+        // Зовнішній цикл 
+        for (int i = 0; i < n - 1; i++) { 
+            int minIndex = i; 
+            assignments++; // присвоєння minIndex 
+            System.out.println("\nІтерація " + i + ":"); 
+            System.out.println(" Поточний елемент (для обміну): arr[" + i + "] = " + arr[i]); 
+            System.out.print(" Шукаємо мінімальний елемент у частині: ["); 
+
+            // Вивід підмасиву для сканування 
+            for (int k = i; k < n; k++) { 
+                System.out.print(arr[k]); 
+                if (k < n - 1) System.out.print(", "); 
+            } 
+            System.out.println("]"); 
+
+            // Внутрішній цикл 
+            for (int j = i + 1; j < n; j++) { 
+                comparisons++; // порівняння 
+                if (arr[j] < arr[minIndex]) { 
+                    minIndex = j; 
+                    assignments++; // нове присвоєння мінімального 
+                } 
+            } 
+  
+            // Перевірка чи потрібно обмінювати 
+            comparisons++; // перевірка if (minIndex != i) 
+            if (minIndex != i) { 
+                System.out.println(" Знайдено мінімальний елемент: arr[" + minIndex + "] = " + arr[minIndex]); 
+                System.out.println(" Обмін arr[" + i + "] (" + arr[i] + ") і arr[" + minIndex + "] (" + arr[minIndex] + ")"); 
+                // Обмін елементів 
+                int temp = arr[i]; 
+                arr[i] = arr[minIndex]; 
+                arr[minIndex] = temp; 
+                assignments += 3; // три присвоєння під час обміну 
+            } 
+
+            System.out.print(" Масив після ітерації " + i + ": "); 
+            printArray(arr); 
+            System.out.println("------------------------------"); 
+        } 
+
+        System.out.println("\nСортування завершено."); 
+        System.out.print("Фінальний відсортований масив: "); 
+        printArray(arr); 
+        System.out.println("Загальна кількість порівнянь: " + comparisons); 
+        System.out.println("Загальна кількість присвоєнь: " + assignments); 
+    } 
+
+    // Метод для зручного виведення масиву 
+    private static void printArray(int[] arr) { 
+        System.out.print("["); 
+        for (int i = 0; i < arr.length; i++) { 
+            System.out.print(arr[i]); 
+            if (i < arr.length - 1) System.out.print(", "); 
+        } 
+        System.out.println("]"); 
+    } 
+} 
