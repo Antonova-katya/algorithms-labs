@@ -1,6 +1,6 @@
 public class Main { 
     public static void main(String[] args) { 
-        int[] arr = {79, 97, 82, 18, 20, 2, 88, 61, 17};  // Варіант 2 
+        int[] arr = {79, 97, 82, 18, 20, 2, 88, 61, 17};  
         int n = arr.length; 
 
         System.out.print("Початковий масив: "); 
