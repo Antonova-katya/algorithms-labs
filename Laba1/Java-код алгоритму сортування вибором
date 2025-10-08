@@ -12,7 +12,7 @@ public class Main {
         // Зовнішній цикл 
         for (int i = 0; i < n - 1; i++) { 
             int minIndex = i; 
-            assignments++; // присвоєння minIndex 
+            assignments++; 
             System.out.println("\nІтерація " + i + ":"); 
             System.out.println(" Поточний елемент (для обміну): arr[" + i + "] = " + arr[i]); 
             System.out.print(" Шукаємо мінімальний елемент у частині: ["); 
@@ -26,23 +26,24 @@ public class Main {
 
             // Внутрішній цикл 
             for (int j = i + 1; j < n; j++) { 
-                comparisons++; // порівняння 
+                comparisons++;  
                 if (arr[j] < arr[minIndex]) { 
                     minIndex = j; 
-                    assignments++; // нове присвоєння мінімального 
+                    assignments++; 
                 } 
             } 
   
             // Перевірка чи потрібно обмінювати 
-            comparisons++; // перевірка if (minIndex != i) 
+            comparisons++; 
             if (minIndex != i) { 
                 System.out.println(" Знайдено мінімальний елемент: arr[" + minIndex + "] = " + arr[minIndex]); 
                 System.out.println(" Обмін arr[" + i + "] (" + arr[i] + ") і arr[" + minIndex + "] (" + arr[minIndex] + ")"); 
+               
                 // Обмін елементів 
                 int temp = arr[i]; 
                 arr[i] = arr[minIndex]; 
                 arr[minIndex] = temp; 
-                assignments += 3; // три присвоєння під час обміну 
+                assignments += 3; 
             } 
 
             System.out.print(" Масив після ітерації " + i + ": "); 
