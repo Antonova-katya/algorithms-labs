@@ -39,7 +39,7 @@ public class Main {
                 assignments++; 
             } 
 
-            // Після виходу з while — додаткове порівняння 
+            // Додаткове порівняння 
             if (i >= 0) { 
                 comparisons++; 
                 System.out.println(" Порівняння: " + A[i] + " > " + key + ". False. Цикл завершено."); 
