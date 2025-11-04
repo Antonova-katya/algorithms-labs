@@ -53,7 +53,7 @@ def heapsort(arr):
     return arr
 
 # Моделювання 
-A = [84, 64, 37, 92, 2, 98, 5, 35, 70, 52, 73, 51, 88, 47]
+A = [79, 97, 82, 18, 20, 2, 88, 61, 17]
 sorted_A = heapsort(A)
 print(f"Відсортований масив: {sorted_A}")
 print(f"\nЗагальна кількість порівнянь: {comparisons}")
